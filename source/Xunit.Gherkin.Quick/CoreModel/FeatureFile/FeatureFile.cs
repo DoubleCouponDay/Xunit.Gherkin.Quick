@@ -21,5 +21,10 @@ namespace Xunit.Gherkin.Quick
 		{
 			return GherkinDocument.Feature.Children.OfType<global::Gherkin.Ast.Background>().SingleOrDefault();
 		}
+
+        internal ScenarioOutline GetScenarioOutline(string scenarioOutlineName)
+        {
+            return GherkinDocument.Feature.Children.FirstOrDefault(s => s.Name == scenarioOutlineName) as global::Gherkin.Ast.ScenarioOutline;
+        }
     }
 }
