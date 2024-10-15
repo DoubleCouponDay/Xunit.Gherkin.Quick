@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.5</TargetFramework>
+    <TargetFrameworks>netstandard1.5;net472</TargetFrameworks>
     <IsPackable>true</IsPackable>
     <PackageId>Xunit.Gherkin.Quick</PackageId>
     <Title>Xunit.Gherkin.Quick</Title>
@@ -11,7 +11,7 @@
     <Copyright>Tengiz Tutisani</Copyright>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseUrl></PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/ttutisani/Xunit.Gherkin.Quick</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/DoubleCouponDay/Xunit.Gherkin.Quick</PackageProjectUrl>
     <PackageTags>BDD, Gherkin, Xunit, Testing, Behavior Driven Development</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <RepositoryUrl>https://github.com/ttutisani/Xunit.Gherkin.Quick</RepositoryUrl>
