@@ -11,37 +11,5 @@ namespace Xunit.Gherkin.Quick
         {
              _featureFileRepository = featureFileRepository ?? throw new ArgumentNullException(nameof(featureFileRepository));
         }
-
-        public async Task ExecuteScenarioOutlineAsync(
-            Feature featureInstance, 
-            string scenarioOutlineName, 
-            string exampleName, 
-            int exampleRowIndex,
-            string featureFilePath)
-        {
-            if (featureInstance == null)
-                throw new ArgumentNullException(nameof(featureInstance));
-
-            if (string.IsNullOrWhiteSpace(scenarioOutlineName))
-                throw new ArgumentNullException(nameof(scenarioOutlineName));
-
-            if (exampleRowIndex < 0)
-                throw new ArgumentException($"`{nameof(exampleRowIndex)}` must be positive", nameof(exampleRowIndex));
-
-            var featureClass = FeatureClass.FromFeatureInstance(featureInstance);
-            var featureFile = _featureFileRepository.GetByFilePath(featureFilePath);
-
-            var gherkinScenarioOutline = featureFile.GetScenarioOutline(scenarioOutlineName);
-            if (gherkinScenarioOutline == null)
-                throw new InvalidOperationException($"Cannot find scenario outline `{scenarioOutlineName}`.");
-            
-            var gherkinScenario = gherkinScenarioOutline.ApplyExampleRow(exampleName, exampleRowIndex);
-            var gherkinBackground = featureFile.GetBackground();
-            if(gherkinBackground != null)
-                gherkinScenario = gherkinScenario.ApplyBackground(gherkinBackground);
-
-			var scenario = featureClass.ExtractScenario(gherkinScenario);
-            await scenario.ExecuteAsync(new ScenarioOutput(featureInstance.InternalOutput));
-        }
     }
 }
